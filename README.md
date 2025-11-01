@@ -4,18 +4,18 @@ A lightweight, no-code web application that allows issuer administrators to desi
 
 ## Features
 
-- 🎨 **Visual Design Editor**: Intuitive interface for designing credential cards
-- 🎯 **Credential Type Selection**: Support for multiple credential schemas (Proof of Enrollment, Member Proof, Certificate)
-- ✍️ **Content Fields**: Title, description, and issuer name customization
-- 🖼️ **Asset Upload**: Upload logos (SVG/PNG) and background images (PNG/JPG)
-- 🎨 **Color Customization**: Primary and accent color pickers with inline color picker
-- 📱 **Layout Options**: Horizontal and vertical card orientations (vertical for preview only)
-- 👁️ **Live Preview**: Real-time preview of credential designs
-- 📋 **Metadata Preview**: View generated Display Method JSON
-- 🌐 **DigitalOcean Spaces Integration**: Automatic upload to DigitalOcean Spaces
-- 🔗 **Gateway URLs**: Returns both CDN URLs and HTTPS gateway URLs
-- 🔐 **Authentication**: Username and password-based authentication
-- 📱 **Responsive Design**: Mobile-friendly interface
+- **Visual Design Editor**: Intuitive interface for designing credential cards
+- **Credential Type Selection**: Support for multiple credential schemas (Proof of Enrollment, Member Proof, Certificate)
+- **Content Fields**: Title, description, and issuer name customization
+- **Asset Upload**: Upload logos (SVG/PNG) and background images (PNG/JPG)
+- **Color Customization**: Primary and accent color pickers with inline color picker
+- **Layout Options**: Horizontal and vertical card orientations (vertical for preview only)
+- **Live Preview**: Real-time preview of credential designs
+- **Metadata Preview**: View generated Display Method JSON
+- **DigitalOcean Spaces Integration**: Automatic upload to DigitalOcean Spaces
+- **Gateway URLs**: Returns both CDN URLs and HTTPS gateway URLs
+- **Authentication**: Username and password-based authentication
+- **Responsive Design**: Mobile-friendly interface
 
 ## Tech Stack
 
