@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { TemplateDesign } from '@/types/display-method';
 import { getCredentialType } from '@/lib/credential-types';
 
@@ -52,11 +53,14 @@ export default function CredentialPreview({ design }: CredentialPreviewProps) {
           <div className="credential-card-footer">
             <div className="flex items-center gap-2 flex-1 min-w-0">
               {design.logoUrl && (
-                <img
+                <Image
                   src={design.logoUrl}
                   alt={design.logoAlt || 'Logo'}
+                  width={88}
+                  height={88}
                   className="object-contain flex-shrink-0"
                   style={{ maxHeight: '2.2em', maxWidth: '2.2em', height: '2.2em', width: 'auto' }}
+                  unoptimized
                 />
               )}
               <div className="flex flex-col min-w-0 flex-1">

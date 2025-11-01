@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { TemplateDesign } from '@/types/display-method';
 import { getAllCredentialTypes } from '@/lib/credential-types';
 import CredentialPreview from '@/components/CredentialPreview';
@@ -15,11 +16,7 @@ export default function EditorPage() {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const [isCheckingAuth, setIsCheckingAuth] = useState(true);
 
-  useEffect(() => {
-    checkAuthentication();
-  }, []);
-
-  const checkAuthentication = async () => {
+  const checkAuthentication = useCallback(async () => {
     try {
       const response = await fetch('/api/auth');
       if (response.ok) {
@@ -40,7 +37,11 @@ export default function EditorPage() {
     } finally {
       setIsCheckingAuth(false);
     }
-  };
+  }, [router]);
+
+  useEffect(() => {
+    checkAuthentication();
+  }, [checkAuthentication]);
 
   const handleLogout = async () => {
     try {
@@ -187,11 +188,13 @@ export default function EditorPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div className="flex items-center gap-3 sm:gap-4 min-w-0 flex-1">
-              <img 
+              <Image 
                 src="/logo.png" 
                 alt="PRUUF Logo" 
+                width={120}
+                height={40}
                 className="h-8 sm:h-10 w-auto object-contain flex-shrink-0"
-                loading="eager"
+                priority
               />
               <div className="min-w-0 flex-1">
                 <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gradient truncate sm:whitespace-normal">

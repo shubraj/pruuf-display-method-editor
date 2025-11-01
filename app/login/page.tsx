@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -10,12 +11,7 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    // Check if already authenticated
-    checkAuth();
-  }, []);
-
-  const checkAuth = async () => {
+  const checkAuth = useCallback(async () => {
     try {
       const response = await fetch('/api/auth');
       if (response.ok) {
@@ -27,7 +23,12 @@ export default function LoginPage() {
     } catch (err) {
       // Not authenticated, show login form
     }
-  };
+  }, [router]);
+
+  useEffect(() => {
+    // Check if already authenticated
+    checkAuth();
+  }, [checkAuth]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -63,10 +64,13 @@ export default function LoginPage() {
     <div className="min-h-screen gradient-bg flex items-center justify-center p-4">
       <div className="card-glass max-w-md w-full p-6 sm:p-8">
         <div className="text-center mb-6 sm:mb-8">
-          <img 
+          <Image 
             src="/logo.png" 
             alt="PRUUF Logo" 
+            width={120}
+            height={48}
             className="h-10 sm:h-12 w-auto mx-auto mb-3 sm:mb-4"
+            priority
           />
           <h1 className="text-2xl sm:text-3xl font-bold text-gradient mb-2">
             PRUUF Display Method Editor

@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 export default function DocsPage() {
   const router = useRouter();
@@ -60,11 +61,13 @@ export default function DocsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div className="flex items-center gap-3 sm:gap-4 min-w-0 flex-1">
-              <img 
+              <Image 
                 src="/logo.png" 
                 alt="PRUUF Logo" 
+                width={120}
+                height={40}
                 className="h-8 sm:h-10 w-auto object-contain flex-shrink-0"
-                loading="eager"
+                priority
               />
               <div className="min-w-0 flex-1">
                 <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gradient truncate sm:whitespace-normal">
@@ -111,7 +114,7 @@ export default function DocsPage() {
           <section className="mb-10">
             <h2 className="text-2xl font-bold text-gray-800 mb-4">What are Custom Display Methods?</h2>
             <p className="text-gray-700 leading-relaxed mb-4">
-              They define how a credential is presented to its holder. For instance, a university may issue digital diplomas in a specific layout (with the university's logo, official colors, etc.) that is visually appealing. A Custom Display Method ensures consistency and brand adherence across all issued credentials.
+              They define how a credential is presented to its holder. For instance, a university may issue digital diplomas in a specific layout (with the university&apos;s logo, official colors, etc.) that is visually appealing. A Custom Display Method ensures consistency and brand adherence across all issued credentials.
             </p>
           </section>
 
@@ -120,7 +123,7 @@ export default function DocsPage() {
             <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
               <h3 className="text-lg font-semibold text-gray-800 mb-3">Scenario</h3>
               <p className="text-gray-700 leading-relaxed mb-4">
-                A company wants to issue secure digital certificates as Verifiable Credentials for its employees' achievements or training. Instead of generic text-based credentials, they want a branded, visually appealing credential that includes:
+                A company wants to issue secure digital certificates as Verifiable Credentials for its employees&apos; achievements or training. Instead of generic text-based credentials, they want a branded, visually appealing credential that includes:
               </p>
               <ul className="list-disc list-inside text-gray-700 space-y-2 ml-4">
                 <li>Company logo</li>
@@ -151,7 +154,7 @@ export default function DocsPage() {
                       <li><strong>Issuer Name</strong>: The name of the issuing organization</li>
                       <li><strong>Primary Color</strong>: Background color for the credential card</li>
                       <li><strong>Accent Color</strong>: Text and accent element color</li>
-                      <li><strong>Logo</strong>: Upload your organization's logo (SVG or PNG, max 2MB)</li>
+                      <li><strong>Logo</strong>: Upload your organization&apos;s logo (SVG or PNG, max 2MB)</li>
                       <li><strong>Background Image</strong>: Upload a background image (PNG or JPG, max 3MB)</li>
                       <li><strong>Logo Alt Text</strong>: Alternative text for accessibility</li>
                     </ul>
@@ -170,7 +173,7 @@ export default function DocsPage() {
                 <ol className="list-decimal list-inside text-gray-700 space-y-2 ml-4">
                   <li>After filling out all metadata fields, review your design in the preview panel.</li>
                   <li>Check the metadata preview section to verify the generated JSON structure.</li>
-                  <li>Click on <strong>"Save & Publish to IPFS"</strong> button.</li>
+                  <li>Click on <strong>&quot;Save &amp; Publish to IPFS&quot;</strong> button.</li>
                   <li>The Editor will:
                     <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
                       <li>Upload your logo and background image to DigitalOcean Spaces</li>
@@ -185,14 +188,14 @@ export default function DocsPage() {
                 <h3 className="text-xl font-bold text-gray-800 mb-3">Step 3: Obtain the Gateway URL</h3>
                 <ol className="list-decimal list-inside text-gray-700 space-y-2 ml-4">
                   <li>Wait for the publishing response (this may take a few seconds).</li>
-                  <li>You'll receive:
+                  <li>You&apos;ll receive:
                     <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
                       <li><strong>CID</strong>: File identifier</li>
                       <li><strong>IPFS URL</strong>: Placeholder format (ipfs://...)</li>
-                      <li><strong>Gateway URL</strong>: The HTTPS URL you'll use (https://your-bucket.region.cdn.digitaloceanspaces.com/...)</li>
+                      <li><strong>Gateway URL</strong>: The HTTPS URL you&apos;ll use (https://your-bucket.region.cdn.digitaloceanspaces.com/...)</li>
                     </ul>
                   </li>
-                  <li>Copy the <strong>Gateway URL</strong> - this is what you'll use in the Issuer Node.</li>
+                  <li>Copy the <strong>Gateway URL</strong> - this is what you&apos;ll use in the Issuer Node.</li>
                   <li>This URL uniquely references your Display Method and will be used for credential display.</li>
                 </ol>
                 <div className="mt-4 bg-yellow-50 border border-yellow-200 rounded-lg p-4">
@@ -296,7 +299,7 @@ export default function DocsPage() {
               <div className="bg-red-50 border border-red-200 rounded-lg p-4">
                 <h3 className="font-semibold text-red-800 mb-2">Display Method Validation Error</h3>
                 <p className="text-sm text-red-700">
-                  If issuer-node shows "Display method is invalid", check that:
+                  If issuer-node shows &quot;Display method is invalid&quot;, check that:
                 </p>
                 <ul className="list-disc list-inside text-sm text-red-700 ml-4 mt-2 space-y-1">
                   <li>All required fields are present in the JSON</li>
@@ -307,7 +310,7 @@ export default function DocsPage() {
               <div className="bg-red-50 border border-red-200 rounded-lg p-4">
                 <h3 className="font-semibold text-red-800 mb-2">Network Error</h3>
                 <p className="text-sm text-red-700">
-                  If you see a "Network Error" when adding the Display Method URL, ensure CORS is configured on your DigitalOcean Spaces bucket. See the README for detailed CORS configuration instructions.
+                  If you see a &quot;Network Error&quot; when adding the Display Method URL, ensure CORS is configured on your DigitalOcean Spaces bucket. See the README for detailed CORS configuration instructions.
                 </p>
               </div>
             </div>
@@ -316,7 +319,7 @@ export default function DocsPage() {
           <section className="mb-10">
             <h2 className="text-2xl font-bold text-gray-800 mb-4">Conclusion</h2>
             <p className="text-gray-700 leading-relaxed mb-4">
-              With the PRUUF Display Method Editor, you can easily create, manage, and apply custom Display Methods to credentials in the Privado Issuer Node. By leveraging custom layouts, organizations and institutions can ensure consistent branding and meaningful designs for their verifiable credentials. This not only adds professionalism but also improves the user's trust and recognition of your issued credentials.
+              With the PRUUF Display Method Editor, you can easily create, manage, and apply custom Display Methods to credentials in the Privado Issuer Node. By leveraging custom layouts, organizations and institutions can ensure consistent branding and meaningful designs for their verifiable credentials. This not only adds professionalism but also improves the user&apos;s trust and recognition of your issued credentials.
             </p>
             <div className="bg-gradient-to-r from-[#0125CF] to-[#2d46e0] rounded-xl p-6 text-white mt-6">
               <h3 className="text-xl font-bold mb-2">Ready to Get Started?</h3>

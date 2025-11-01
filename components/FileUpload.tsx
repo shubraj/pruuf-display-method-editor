@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useRef, useState } from 'react';
 
 interface FileUploadProps {
@@ -93,10 +94,13 @@ export default function FileUpload({
           <div className="flex items-center gap-4">
             {currentUrl && (
               <div className="flex-shrink-0">
-                <img
+                <Image
                   src={currentUrl}
                   alt="Preview"
+                  width={80}
+                  height={80}
                   className="w-20 h-20 object-contain rounded-lg border-2 border-white shadow-sm"
+                  unoptimized
                 />
               </div>
             )}
