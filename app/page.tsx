@@ -200,9 +200,7 @@ export default function EditorPage() {
                 <p className="text-xs sm:text-sm text-gray-600 mt-1 hidden sm:block">
                   To change the look of your credential card, edit the details below. See{' '}
                   <a 
-                    href="https://docs.pruuf.tech/docs/display-method" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
+                    href="/docs" 
                     className="text-[#0125CF] hover:underline inline-flex items-center gap-1"
                   >
                     documentation
