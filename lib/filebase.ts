@@ -51,26 +51,35 @@ export interface UploadResult {
  * @returns UploadResult with file identifier and URLs
  */
 export async function uploadToFilebase(
-  file: File | Buffer,
+  file: File | Buffer | any,
   fileName?: string,
   contentType?: string
 ): Promise<UploadResult> {
   try {
     const key = fileName || `${uuidv4()}-${Date.now()}`;
     
+    // Check if it's a File-like object (from FormData) or Buffer
+    const isFileLike = (obj: any): obj is File => {
+      return obj && typeof obj === 'object' && typeof obj.arrayBuffer === 'function' && !Buffer.isBuffer(obj);
+    };
+    
     // Convert file to Buffer
     let fileBuffer: Buffer;
-    if (file instanceof File) {
+    let mimeType = contentType || 'application/octet-stream';
+    
+    if (isFileLike(file)) {
+      // File-like object from FormData (has arrayBuffer method)
       const arrayBuffer = await file.arrayBuffer();
       fileBuffer = Buffer.from(arrayBuffer);
+      // Try to get MIME type from the file object
+      if (file.type) {
+        mimeType = file.type;
+      }
+    } else if (Buffer.isBuffer(file)) {
+      fileBuffer = file;
     } else {
-      fileBuffer = Buffer.isBuffer(file) ? file : Buffer.from(file);
-    }
-    
-    // Determine content type
-    let mimeType = contentType || 'application/octet-stream';
-    if (file instanceof File && file.type) {
-      mimeType = file.type;
+      // Fallback: try to convert to Buffer
+      fileBuffer = Buffer.from(file);
     }
 
     const command = new PutObjectCommand({
